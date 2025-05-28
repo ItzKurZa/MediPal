@@ -5,7 +5,6 @@ function ChatInput({ onSendMessage, isLoading }) {
   const [message, setMessage] = useState('');
   const textareaRef = useRef(null);
 
-  // Auto-resize textarea based on content
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -19,7 +18,6 @@ function ChatInput({ onSendMessage, isLoading }) {
       onSendMessage(message);
       setMessage('');
       
-      // Reset height
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
@@ -45,7 +43,7 @@ function ChatInput({ onSendMessage, isLoading }) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Message MediChat..."
+            placeholder="Message MediPal..."
             className="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-10 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent resize-none min-h-[48px] max-h-[200px]"
             rows={1}
             disabled={isLoading}
@@ -65,9 +63,8 @@ function ChatInput({ onSendMessage, isLoading }) {
         </button>
       </form>
       
-      {/* Helper text */}
       <div className="text-xs text-gray-500 mt-2 text-center max-w-3xl mx-auto">
-        MediChat is a medical AI assistant. It may provide inaccurate information. 
+        MediPal is a medical AI assistant. It may provide inaccurate information. 
         Please consult healthcare professionals for medical advice.
       </div>
     </div>

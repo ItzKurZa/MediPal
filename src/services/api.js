@@ -20,13 +20,11 @@ export async function sendMessage(message) {
   }
 }
 
-// Mock function for development - replace with actual implementation
 export function getMockResponse(message) {
   return new Promise((resolve) => {
-    // Simulate network delay
     setTimeout(() => {
       if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
-        resolve("Hello! I'm MediChat, your medical AI assistant. How can I help you today?");
+        resolve("Hello! I'm MediPal, your medical AI assistant. How can I help you today?");
       } else if (message.toLowerCase().includes('headache')) {
         resolve("Headaches can be caused by various factors including stress, dehydration, lack of sleep, or more serious conditions. How long have you been experiencing this symptom? Any other symptoms accompanying it?");
       } else if (message.toLowerCase().includes('fever')) {

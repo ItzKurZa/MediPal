@@ -29,7 +29,7 @@ function Header({ toggleSidebar }) {
       
       <div className="flex items-center">
         <Activity size={24} className="text-primary-500 mr-2" />
-        <h1 className="text-xl font-semibold text-gray-800">MediChat</h1>
+        <h1 className="text-xl font-semibold text-gray-800">MediPal</h1>
       </div>
       
       <div className="ml-auto flex items-center">

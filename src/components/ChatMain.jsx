@@ -8,13 +8,11 @@ function ChatMain() {
   const { currentChat, sendMessage, isLoading } = useChat();
   const messagesEndRef = useRef(null);
 
-  // Sample questions that can be clicked
   const sampleQuestions = [
     ["What are common symptoms of the flu?", "How much water should I drink daily?"],
     ["What can help with headaches?", "How can I improve my sleep?"]
   ];
 
-  // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [currentChat?.messages]);
@@ -25,7 +23,6 @@ function ChatMain() {
 
   return (
     <main className="flex-1 flex flex-col h-full">
-      {/* Messages area with padding top to account for header */}
       <div className="flex-1 overflow-y-auto p-4 bg-white">
         {currentChat && currentChat.messages.length > 0 ? (
           <div className="max-w-3xl mx-auto mt-12">
@@ -33,7 +30,6 @@ function ChatMain() {
               <Message key={message.id} message={message} />
             ))}
             
-            {/* Loading indicator */}
             {isLoading && (
               <div className="flex justify-start mb-4">
                 <div className="bg-gray-100 rounded-lg px-4 py-3 text-gray-500 animate-pulse rounded-tl-none">
@@ -51,7 +47,7 @@ function ChatMain() {
                 <Activity size={32} className="text-primary-500" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-                Welcome to MediChat
+                Welcome to MediPal
               </h2>
               <p className="text-gray-600 mb-6">
                 Your AI medical assistant, designed to provide informational support on health-related questions.
@@ -77,7 +73,6 @@ function ChatMain() {
         )}
       </div>
       
-      {/* Input area */}
       <ChatInput onSendMessage={sendMessage} isLoading={isLoading} />
     </main>
   );
