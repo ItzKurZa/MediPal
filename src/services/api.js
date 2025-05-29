@@ -2,9 +2,12 @@ import axios from 'axios';
 
 export async function sendMessage(userMessage) {
   try {
+    // Extract the content from the message object, or use the message directly if it's already a string
+    const messageContent = typeof userMessage === 'object' ? userMessage.content : userMessage;
+
     const response = await axios.post(
       'https://ba55-34-142-174-48.ngrok-free.app/api/chat',
-      { prompt: userMessage },
+      { prompt: messageContent },
       {
         headers: {
           'Content-Type': 'application/json',
