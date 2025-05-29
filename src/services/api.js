@@ -1,19 +1,12 @@
+import axios from 'axios';
+
 export async function sendMessage(message) {
   try {
-    const response = await fetch('https://your-colab-fastapi-url.com/api/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message }),
+    const response = await axios.post('https://your-colab-fastapi-url.com/api/chat', {
+      message
     });
 
-    if (!response.ok) {
-      throw new Error('Failed to get response from API');
-    }
-
-    const data = await response.json();
-    return data.response;
+    return response.data.response;
   } catch (error) {
     console.error('Error sending message:', error);
     return "I'm sorry, I'm having trouble connecting to the server. Please try again later.";
