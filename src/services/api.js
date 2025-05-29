@@ -6,7 +6,7 @@ export async function sendMessage(userMessage) {
     const messageContent = typeof userMessage === 'object' ? userMessage.content : userMessage;
 
     const response = await axios.post(
-      'https://https://puma-verified-marmoset.ngrok-free.app/api/chat',
+      'https://puma-verified-marmoset.ngrok-free.app/api/chat',
       { prompt: messageContent },
       {
         headers: {
