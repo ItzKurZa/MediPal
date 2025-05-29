@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function sendMessage(message) {
   try {
-    const response = await axios.post('https://your-colab-fastapi-url.com/api/chat', {
+    const response = await axios.post('https://ba55-34-142-174-48.ngrok-free.app/api/chat', {
       message
     });
 
@@ -13,6 +13,7 @@ export async function sendMessage(message) {
   }
 }
 
+// Keeping getMockResponse for fallback if needed
 export function getMockResponse(message) {
   return new Promise((resolve) => {
     setTimeout(() => {
