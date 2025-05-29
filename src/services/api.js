@@ -2,7 +2,10 @@ import axios from 'axios';
 
 export async function sendMessage(userMessage) {
   try {
-    // Extract the content from the message object, or use the message directly if it's already a string
+    // For now, use mock responses since the API is unavailable
+    return await getMockResponse(userMessage);
+
+    /* Commented out until new ngrok URL is available
     const messageContent = typeof userMessage === 'object' ? userMessage.content : userMessage;
 
     const response = await axios.post(
@@ -16,13 +19,15 @@ export async function sendMessage(userMessage) {
     );
 
     return response.data.response;
+    */
   } catch (error) {
     console.error('Error sending message:', error.response ? error.response.data : error.message);
-    return "I'm sorry, I'm having trouble connecting to the server. Please try again later.";
+    // Fallback to mock response in case of error
+    return await getMockResponse(userMessage);
   }
 }
 
-// Keeping getMockResponse for fallback if needed
+// Mock response function for fallback
 export function getMockResponse(message) {
   return new Promise((resolve) => {
     setTimeout(() => {
