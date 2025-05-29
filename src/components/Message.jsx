@@ -24,7 +24,7 @@ function Message({ message }) {
         
         {/* Message content */}
         <div className="prose prose-sm max-w-none">
-          {message.content.split('\n').map((paragraph, index) => (
+          {(message.content || '').split('\n').map((paragraph, index) => (
             <p key={index} className={index > 0 ? 'mt-2' : ''}>
               {paragraph}
             </p>

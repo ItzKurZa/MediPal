@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { generateId } from '../utils/helpers';
-import { sendMessage } from '../services/api';
+import { sendMessage as callApiSendMessage } from '../services/api';
 
 const ChatContext = createContext(undefined);
 
@@ -89,8 +89,8 @@ export function ChatProvider({ children }) {
     setIsLoading(true);
 
     try {
-      // Get response from API
-      const responseContent = await sendMessage(content);
+      // Get response from API using the renamed function
+      const responseContent = await callApiSendMessage(content);
 
       // Create assistant message
       const assistantMessage = {
