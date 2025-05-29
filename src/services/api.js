@@ -2,10 +2,6 @@ import axios from 'axios';
 
 export async function sendMessage(userMessage) {
   try {
-    // For now, use mock responses since the API is unavailable
-    return await getMockResponse(userMessage);
-
-    /* Commented out until new ngrok URL is available
     const messageContent = typeof userMessage === 'object' ? userMessage.content : userMessage;
 
     const response = await axios.post(
@@ -19,15 +15,13 @@ export async function sendMessage(userMessage) {
     );
 
     return response.data.response;
-    */
   } catch (error) {
     console.error('Error sending message:', error.response ? error.response.data : error.message);
-    // Fallback to mock response in case of error
-    return await getMockResponse(userMessage);
+    return "I'm sorry, I'm having trouble connecting to the server. Please try again later.";
   }
 }
 
-// Mock response function for fallback
+// Keeping getMockResponse for fallback if needed
 export function getMockResponse(message) {
   return new Promise((resolve) => {
     setTimeout(() => {
