@@ -2,18 +2,19 @@ import axios from 'axios';
 
 export async function sendMessage(userMessage) {
   try {
-    const response = await axios.post('https://ba55-34-142-174-48.ngrok-free.app/api/chat', {
-      message: {
-        id: userMessage.id,
-        content: userMessage.content,
-        role: userMessage.role,
-        timestamp: userMessage.timestamp
+    const response = await axios.post(
+      'https://ba55-34-142-174-48.ngrok-free.app/api/chat',
+      { prompt: userMessage },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
-    });
+    );
 
     return response.data.response;
   } catch (error) {
-    console.error('Error sending message:', error);
+    console.error('Error sending message:', error.response ? error.response.data : error.message);
     return "I'm sorry, I'm having trouble connecting to the server. Please try again later.";
   }
 }
