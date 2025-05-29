@@ -89,8 +89,8 @@ export function ChatProvider({ children }) {
     setIsLoading(true);
 
     try {
-      // Get response from API using the renamed function
-      const responseContent = await callApiSendMessage(content);
+      // Pass the complete userMessage object to the API
+      const responseContent = await callApiSendMessage(userMessage);
 
       // Create assistant message
       const assistantMessage = {

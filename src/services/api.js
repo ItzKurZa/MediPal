@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-export async function sendMessage(message) {
+export async function sendMessage(userMessage) {
   try {
     const response = await axios.post('https://ba55-34-142-174-48.ngrok-free.app/api/chat', {
-      message
+      message: {
+        id: userMessage.id,
+        content: userMessage.content,
+        role: userMessage.role,
+        timestamp: userMessage.timestamp
+      }
     });
 
     return response.data.response;
